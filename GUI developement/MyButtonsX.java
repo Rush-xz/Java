@@ -8,7 +8,9 @@ class MyButtonsX extends Frame implements ActionListener
 
 	MyButtonsX()
 	{	
-		//do not set any layout
+		/*when we use some layout manager like this, there
+		 is no need of using setBound() method to specify the
+		 location of push button*/
 		setLayout(new FlowLayout());
 		/*if we didn't use 'this'
 		 since we did not use any object to call method
@@ -22,9 +24,9 @@ class MyButtonsX extends Frame implements ActionListener
 		b3 = new Button("Green");
 
 		//set the location of buttons in the frame
-		b1.setBounds(100,100,70,40);
+		/*b1.setBounds(100,100,70,40);
 		b2.setBounds(100,160,70,40);
-		b3.setBounds(100,220,70,40);
+		b3.setBounds(100,220,70,40);*/
 
 		//add buttons to frame
 		add(b1);
@@ -50,17 +52,19 @@ class MyButtonsX extends Frame implements ActionListener
 	public void actionPerformed(ActionEvent ae)
 	{
 		//know the label of button clicked by user
-		String str = ae.getActionCommand();
+		//String str = ae.getActionCommand();
 
 		/*
 		change the frame's background color depending on
 		button clicked
+		Here we are using getSource() instead of
+		geActionCommand()
 		*/
-		if(str.equals("Red"))
+		if(ae.getSource() == b1)
 			setBackground(Color.red);
-		else if(str.equals("Yellow"))
+		else if(ae.getSource() == b2)
 			setBackground(Color.yellow);
-		else if(str.equals("Green"))
+		else if(ae.getSource() == b3)
 			setBackground(Color.green);
 	}
 
